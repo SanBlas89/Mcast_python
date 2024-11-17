@@ -1,0 +1,22 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<!-- Page Header -->
+<h1>Add New Category</h1>
+
+<!-- Category Form inside Bootstrap 5 styling -->
+<form method="post">
+    {% csrf_token %}
+    
+    <div class="mb-3">
+        {{ form.as_p }}
+    </div>
+
+    <!-- Save Button with Bootstrap 5 styling -->
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+<!-- Back to Categories Link with Bootstrap 5 button styling -->
+<a href="{% url 'inventory:category_list' %}" class="btn btn-secondary mt-3">Back to Categories</a>
+
+{% endblock %}

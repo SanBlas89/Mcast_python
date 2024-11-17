@@ -1,0 +1,30 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+<h2>Product List</h2>
+<a href="{% url 'inventory:product_add' %}" class="btn btn-primary">Add Product</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.category }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.quantity }}</td>
+            <td><a href="{% url 'inventory:product_detail' product.id %}" class="btn btn-info">Details</a>
+                <a href="{% url 'inventory:product_edit' product.id %}" class="btn btn-info">Edit</a>  
+                <a href="{% url 'inventory:product_delete' product.id %}" class="btn btn-info">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+

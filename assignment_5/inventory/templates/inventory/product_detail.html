@@ -1,0 +1,49 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<!-- Trigger Button for Modal -->
+<h2>{{ product.name }}</h2>
+<p>Category: {{ product.category }}</p>
+<p>Description: {{ product.description }}</p>
+<p>Price: ${{ product.price }}</p>
+<p>Quantity: {{ product.quantity }}</p>
+
+<!-- Button to Open the Modal -->
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#transactionModal">
+  Add Transaction
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="transactionModal" tabindex="-1" aria-labelledby="transactionModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="transactionModalLabel">Add Transaction for {{ product.name }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Category: {{ product.category }}</p>
+        <p>Price: ${{ product.price }}</p>
+        <p>Quantity Available: {{ product.quantity }}</p>
+
+        <!-- Form to Add Transaction (or any other actions you need) -->
+        <form action="{% url 'inventory:transaction_create' product.id %}" method="POST">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="transactionQuantity" class="form-label">Quantity to Add</label>
+            <input type="number" class="form-control" id="transactionQuantity" name="quantity" min="1" max="{{ product.quantity }}" required>
+          </div>
+          <div class="mb-3">
+            <label for="transactionPrice" class="form-label">Transaction Price</label>
+            <input type="number" class="form-control" id="transactionPrice" name="price" step="0.01" value="{{ product.price }}" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Confirm Transaction</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

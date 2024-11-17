@@ -1,0 +1,11 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+<h1>Categories</h1>
+<a href="{% url 'inventory:category_add' %}" class="btn btn-primary">Add New Category</a>
+<ul>
+    {% for category in categories %}
+    <li>{{ category.name }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
