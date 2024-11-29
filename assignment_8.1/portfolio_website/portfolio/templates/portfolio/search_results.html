@@ -1,0 +1,24 @@
+{% extends 'portfolio/base.html' %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+<h2>Search Results</h2>
+<form method="get" class="search-form">
+  {{ form.query }}
+  {{ form.category }}
+  <button type="submit" class="btn btn-primary">Search</button>
+</form>
+{% if results %}
+  <ul>
+      {% for result in results %}
+      <li>
+          <a href="{% url 'portfolio:project_detail' result.slug %}">{{ result.title }}</a>
+      </li>
+      {% endfor %}
+  </ul>
+{% else %}
+  <p>No results found.</p>
+{% endif %}
+<a href="{% url 'portfolio:home' %}" class="btn">Back to Home</a>
+{% endblock %}

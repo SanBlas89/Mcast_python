@@ -1,0 +1,15 @@
+{% extends 'portfolio/base.html' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+<h2>Contact Me</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn">Send Message</button>
+</form>
+{% if success %}
+<p>Your message has been sent successfully!</p>
+{% endif %}
+{% endblock %}

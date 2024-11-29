@@ -1,0 +1,48 @@
+/* Ajustes generales */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  main {
+    flex: 1;
+  }
+  
+  /* Navbar */
+  .navbar-brand img {
+    margin-right: 10px;
+  }
+  
+  /* Footer */
+  .footer {
+    margin-top: auto;
+  }
+  
+  .social-links a {
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  .social-links a:hover {
+    color: #007bff !important;
+  }
+  
+  /* Enlaces del footer */
+  footer ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  footer a {
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  footer a:hover {
+    opacity: 0.8;
+  }
+  
+  /* Alertas */
+  .alert {
+    margin-top: 1rem;
+  }

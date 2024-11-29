@@ -1,0 +1,10 @@
+{% extends 'portfolio/base.html' %}
+
+{% block title %}Resume{% endblock %}
+
+{% block content %}
+<h2>My Resume</h2>
+<p>You can download my resume using the link below:</p>
+<a href="{% static 'resume.pdf' %}" class="btn">Download Resume</a>
+<a href="{% url 'portfolio:home' %}" class="btn">Back to Home</a>
+{% endblock %}

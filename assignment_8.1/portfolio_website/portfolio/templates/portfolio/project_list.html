@@ -1,0 +1,17 @@
+{% extends 'portfolio/base.html' %}
+
+{% block title %}Projects{% endblock %}
+
+{% block content %}
+<h2>My Projects</h2>
+<div class="project-grid">
+  {% for project in projects %}
+  <div class="project-card">
+      <h3>{{ project.title }}</h3>
+      <img src="{{ project.image.url }}" alt="{{ project.title }}">
+      <p>{{ project.description }}</p>
+      <a href="{% url 'portfolio:project_detail' project.slug %}" class="btn">View Details</a>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
